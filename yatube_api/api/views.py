@@ -42,7 +42,6 @@ class FollowViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
     serializer_class = FollowSerializer
     permission_classes = (permissions.IsAuthenticated,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
-    pagination_class = None
     search_fields = ("user__username", "following__username")
 
     def perform_create(self, serializer):
