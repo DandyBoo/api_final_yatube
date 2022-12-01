@@ -11,7 +11,10 @@ from posts.models import Group, Post
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly,)
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly,
+    )
     pagination_class = LimitOffsetPagination
 
     def perform_create(self, serializer):
@@ -21,12 +24,18 @@ class PostViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly,)
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly,
+    )
 
 
 class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly,)
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsAuthorOrReadOnly,
+    )
 
     def get_queryset(self):
         post = get_object_or_404(Post, id=self.kwargs['id'])
