@@ -26,7 +26,7 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         Group, on_delete=models.CASCADE,
-        related_name="posts", blank=True, null=True
+        related_name='posts', blank=True, null=True
     )
 
     def __str__(self):
@@ -51,14 +51,14 @@ class Follow(models.Model):
         User,
         blank=True,
         null=True,
-        related_name="follower",
+        related_name='follower',
         on_delete=models.CASCADE
     )
     following = models.ForeignKey(
         User,
         blank=True,
         null=True,
-        related_name="following",
+        related_name='following',
         on_delete=models.CASCADE
     )
 
